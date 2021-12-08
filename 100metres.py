@@ -1,22 +1,32 @@
-# 110 Metre Hurdles
-# Throw all five dice, up to six times, until you are satisfied with the results
-# Scoring = total value of all five dice
+#100 METERS 
 
 import random
-
-score = 0 # record's the user's score
-dice = [0, 0, 0, 0, 0]
-
-for i in range(6):
-    # roll five dice
-    for d in range(5): #0, 1, 2, 3, 4
-        dice[d] = random.randint(1,6)
-    # list dice with five random numbers
-    score = sum(dice)
-    question = input("Do you want to roll again?  y/n")
-    if question == "n":
-        break  # exit the for-loop
-
-# message with the final score
+total100 = 0
+attempts = 1
+dice100 = [0, 0, 0, 0]
+for d in range(4): #0,1,2,3
+        dice100[0] = random.randint(1,6) #rolls all four dice
+        dice100[1] = random.randint(1,6)
+        dice100[2] = random.randint(1,6)
+        dice100[3] = random.randint(1,6) 
+        print(dice100)
+        total100 = dice100[0] + dice100[1] + dice100[3] + dice100[2] #total of the 100 meter dice rolls
+        print(total100)
+        if attempts < 4:
+            print("this was your #" , attempts , " attempt, you only have 4 attempts.")
+        
+        if attempts == 4:
+            print("this was your fourth attempt, you must keep this sum")
+            break
+        else:
+            happy = input("do you want to roll again(y) or keep this sum(n)? (y/n): ")
+            if happy == "n" or happy == "n":
+                break
+            elif happy == "y" or happy == "Y":
+                attempts = attempts + 1
+        
+print("you kept the a total of:" , total100) #the total of the first set of dice rolls
+    
+#not sure why the list is not going the way it should right now
 
     
