@@ -1,54 +1,81 @@
-def nice  dice(num):
+import random
+def nicedice(num):
     if num == 1:
-        print(u"\u2680")
+        return(u"\u2680") # nice dice with 1 on it
     elif num == 2:
-        print(u"\u2681")
+        return(u"\u2681") # nice dice with 2 on it
     elif num == 3:
-        print(u"\u2682")
+        return(u"\u2682") # nice dice with 3 on it
     elif num == 4:
-        print(u"\u2683")
+        return(u"\u2683") # nice dice with 4 on it
     elif num == 5:
-        print(u"\u2684")
+        return(u"\u2684") # nice dice with 5 on it
     elif num == 6:
-        print(u"\u2685")
-        
+        return(u"\u2685") # nice dice with 6 on it
+
 
 #high jump and 100 meters
 # starting with high jump
-import random
-height = 10 
-restart = 0
-total = 0
+
+height = 10 # starting height for high jump
+restart = 0 # amount of restarts for high jump
+total = 0 # total of all dice for high jump
+diceHJ = [0, 0, 0, 0, 0]  #diceHJ stands for Dice High Jump
+skip =  0 # skip value
+skipPerm = " '" # skip permission
+heightC = 0 # stands for height cleared, used to differnciate when skips have been used
 while restart < 3:
-    dice1 = random.randint(1, 6)
-    dice2 = random.randint(1, 6)
-    dice3 = random.randint(1, 6)
-    dice4 = random.randint(1, 6)
-    dice5 = random.randint(1, 6)
-    total = dice1 + dice2 + dice3 + dice4 + dice5
+    print("the bar is currently at" , height)
+    print("the previous bar was at" , heightC)
+    diceHJ[0] = random.randint(1,6)
+    diceHJ[1] = random.randint(1,6)
+    diceHJ[2] = random.randint(1,6)
+    diceHJ[3] = random.randint(1,6)
+    diceHJ[4] = random.randint(1,6)
+    print(diceHJ)
+
+    total = sum(diceHJ)
     #print (u"\u2680") #1 
     #print (u"\u2681") #2 
     #print (u"\u2682") #3 
     #print (u"\u2683") #4 
     #print (u"\u2684") #5 
     #print (u"\u2685") #6 I need to figure out how to uses these
-    
+
     print("you rolled " , total)
+    
     if restart == 3:
         break
     else:
         if total >= height:
-            print("sucsess, raise the bar, it will be raised to" , height + 2)
-            height = height + 2
-            if height == 30:
-                print("congrats you jumped 30', that is the max height")
-                break
+            heightC = height
+            print("sucsess, the bar will be raised")
+            print("you have the option to skip to a certain height, but if you fail to clear the bar, your score will be" , height)
+            skipPerm = input("do you want to skip?(y/n)")
+            while skipPerm == "y" or skipPerm == "Y": # what happens when the user wants to skip to a certain height
+                print("you  have elected to skip, please chose a height greater than" , height , "but less than 30")
+                skip = int(input("what number would you like to skip to?"))
+                if skip > 30:
+                    print("please chose a number less than 30")
+                if skip < height:
+                    print("please chose a height greater than the height you have already cleared (" , height , ")")
+                if skip > height and skip <= 30:
+                    height = skip
+                    print("the bar has been raised to" , skip)
+                    break
+            else: # if the user doesnt want to skip, 
+                print("you chose not to skip, the bar will be raised to" , height + 2)
+                height = height + 2
+                if height == 30:
+                    print("congrats you jumped 30', that is the max height")
+                    break
         else:
             restart = restart + 1
-            print("try again, you rolled" , total)
+            print("try again, you rolled" , total , "you need to roll atleast a" , height)
 
-if height == 30:
+if heightC == 30:
     print("wow, you are pretty lucky you reached the max possible height of 30")
 else:
-    print("you reached a height of " , height ," think you can beat it? try again!")            
+    print("you reached a height of " , heightC ,)  
+    
 
