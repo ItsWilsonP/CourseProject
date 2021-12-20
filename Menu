@@ -1,0 +1,33 @@
+#Menu 
+Y100 = "NM" # yes or no for games
+YJump = "M" # yes or no for games
+Meters100 = False
+HighJump = False
+print("good-day, you have the option to play two games, either 100meters or high jump")
+print("you have the option of playing either both, one or none!")
+print("the first game is 100 meters, you have 4 dice, which you can throw seven times. You the total is added together, but sixes count negative")
+print("once you finish the first four dice, you repeat the same process and then add the two totals together! You have seven retries for both sets of throws")
+while Meters100 == False:
+    Y100 = input("would you like to play 100 meters?:(y/n)")
+    if Y100 == "y" or Y100 == "Y": # this will need a loop at somepoint
+        Meters100 == True
+        break
+    if Y100 == "n" or Y100 == "N":
+        Meters100 == False
+        break
+    else:
+        print('please answer "y" for yes, or "n" for no')
+
+print("the second game is called high jump. Roll the dice and aim for a score higher than the bar, you can chose to skip to a certian height")
+print("but if you fail to clear that height, you go back to the lowest height you were at.")
+while HighJump == False:
+    YJump = input("would you like to Highjump?:(y/n)")
+    if YJump == "y" or YJump == "Y": # this will need a loop at somepoint
+        HighJump == True
+        break
+    if YJump == "n" or YJump == "N":
+        HighJump == False
+        break
+    else:
+        print('please answer "y" for yes, or "n" for no')
+
